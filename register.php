@@ -1,21 +1,21 @@
 <?php
-require_once './model/user.php';
+require_once './model/writer.php';
 require_once './controller/crud.php';
 if (
   isset($_POST['submit']) && !empty($_POST['fname']) && !empty($_POST['lname']) &&
   !empty($_POST['email']) && !empty($_POST['password'] && !empty($_POST['password_confirmation']))
 ) {
-  $user1 = new userssss();
-  $user1->setfname($_POST['fname']);
-  $user1->setlname($_POST['lname']);
-  $user1->setemail($_POST['email']);
-  $user1->setpassword($_POST['password']);
-  $user1->setconfirmpassword($_POST['password_confirmation']);
+  $writer = new writer();
+  $writer->setfname($_POST['fname']);
+  $writer->setlname($_POST['lname']);
+  $writer->setemail($_POST['email']);
+  $writer->setpassword($_POST['password']);
+  $writer->setconfirmpassword($_POST['password_confirmation']);
   $opertion1 = new opertions();
-  if (count($user1->checkvalid()) > 0) {
-    echo $user1->checkvalid()[0];
+  if (count($writer->checkvalid()) > 0) {
+    echo $writer->checkvalid()[0];
   } else {
-    $ss = $opertion1->adddata('users', ["fname" => $user1->getfname(), "lname" => $user1->getlname(), "email" => $user1->getemail(), "pass" => $user1->getpassword()]);
+    $ss = $opertion1->adddata('writer', ["fname" => $writer->getfname(), "lname" => $writer->getlname(), "email" => $writer->getemail(), "password" => $writer->getpassword()]);
  
  header("location:login.php");
   }
@@ -41,7 +41,6 @@ if (
         -o-transition: opacity 0.3s ease-in-out;
         transition: opacity 0.3s ease-in-out;
       }
-
       .login-footer:hover {
         opacity: 1;
       } */

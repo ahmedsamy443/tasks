@@ -1,33 +1,30 @@
 <?php
 session_start();
-
-    require_once './model/user.php';
+ require_once './model/writer.php';
 if (isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['password'])) {
-    $user2 = new userssss();
-    $user2->setemail($_POST['email']);
-    $user2->setpassword($_POST['password']);
-    if(count($user2->checkvalid()) > 0)
+    $writer = new writer();
+    $writer->setemail($_POST['email']);
+    $writer->setpassword($_POST['password']);
+    if(count($writer->checkvalid()) > 0)
    {
    // echo $user2->checkvalid();
    }
    else
    {
-       $email=$user2->getemail();
-       echo $email;
-       $password=$user2->getpassword();
-    $dbcon=mysqli_connect("localhost","root","","first");
-    $selectedquery="select id, email,pass from users where email='$email' and pass ='$password'";
+       $email=$writer->getemail();
+      // echo $email;
+       $password=$writer->getpassword();
+    $dbcon=mysqli_connect("localhost","root","","book");
+    $selectedquery="select id,email,password from writer where email='$email' and password ='$password'";
     //echo $selectedquery;
     $result =mysqli_query($dbcon,$selectedquery);
     if(mysqli_num_rows($result)> 0)
     {
-
         $row=mysqli_fetch_array($result);
-        var_dump($row);
-        echo $row['id'] ;
         $id= $row['id'];
        $_SESSION['userid']= $id;
        $_SESSION['login']=true;
+       header("location:homepage.php");
 
        // header("location:indexxxx.php");
        // var_dump($_SESSION['userid']);

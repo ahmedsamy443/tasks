@@ -11,9 +11,9 @@ class opertions
         echo $table_value;
        
         $selectquery="insert into $table($table_colums) values ('$table_value')";
-
-     echo $selectquery;
-        $con=mysqli_connect("localhost","root","","first");
+       // var_dump($selectquery);
+        //echo $selectquery;
+        $con=mysqli_connect("localhost","root","","book");
         $dp = mysqli_query($con,$selectquery);
         if($dp )
         {
@@ -25,13 +25,7 @@ class opertions
         }
    
     }
-    public function dbcon()
-    {
-        $servername="localhost";
-        $user="root";
-        $database="first";
-      return mysqli_connect($servername,$user,"",$database);
-    }
+    
     
 }
 

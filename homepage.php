@@ -1,101 +1,163 @@
+<?php 
+session_start();
+ if(!$_SESSION['login'])
+ {
+    header("location:login.php");
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="./public/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
-    .container-fluid .btn i {
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      line-height: 60px;
-    }
+  <head>
 
-    .container-fluid .card {
-      margin: 20px auto;
-      max-width: 900px;
-    }
-  </style>
-</head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<body>
-  <!-- nav -->
-  <div class="container-fluid">
-    <div class="row bg-light border-end">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="
-              container-fluid
-              d-flex
-              flex-row-reverse
-              justify-content-md-between
-            ">
-          <div class="col-1 offset-lg-8 offset-xxl-9">
-            <a class="btn" href="add.php" id="sidebarToggle"><i class="fa fa-facebook text-white bg-primary fs-2"></i></a>
+    <title>Book Storage System</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="background-image: linear-gradient(#2144,gray)">
+
+      <a class="navbar-brand mr-1" href="index.php"> Book Storage System </a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class=""></i>
+      </button>
+
+      <!-- Navbar Search -->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        
+      </form>
+
+      <!-- Navbar -->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <!--<li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <span class="badge badge-danger">9+</span>
+          </a>
+         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="col-2 collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mt-2 mt-lg-0 d-flex flex-row-reverse">
-              <li class="nav-item active">
-                <a class="nav-link" href="#!">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="control.php">Log out</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="control.php">addpost</a>
-              </li>
-              
-                </div>
-              </li>
-            </ul>
+        </li>
+        <li class="nav-item dropdown no-arrow mx-1">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-envelope fa-fw"></i>
+            <span class="badge badge-danger">7</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </div>
-      </nav>
-    </div>
-  </div>
-  <!-- content -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-9 m-auto">
-        <div class="card mb-3">
-          <div class="card-header">Header</div>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
-          </p>
-          <img width="200px" src="https://via.placeholder.com/150/FF0000/808080/?text=Down.com"  alt="..." />
-          <div class="card-body">
-            <div class="card-footer">
-              <form action="#" method="post">
-                <input type="text" class="form-control" name="comment" placeholder="Write a comment ..." id="" />
-                <input type="submit" class="btn btn-primary" name="go" value="Go" />
-              </form>
+        </li>-->
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div  class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="register.php">Register</a>
+            <a class="dropdown-item" href="login.php">Sign in</a>
+            <a class="dropdown-item" href="logout.php">Logout</a>
+            
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+    
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">
+            <i class="fas fa-fw fa-home"></i>
+            <span>HOMEPAGE</span>
+          </a>
+        </li>
+        </li>
+       
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="books.php">
+            <i class="fas fa-fw fa-book  "></i>
+            <span>Books</span></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="addbook.php">
+            <i class="fas fa-fw fa-book  "></i>
+            <span>addbook</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profile.php">
+            <i class="fas fa-fw fa-book  "></i>
+            <span>profile</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="writerbooks.php">
+            <i class="fas fa-fw fa-book  "></i>
+            <span>writerbooks</span></a>
+        </li>
+      </ul>
+      <div id="content-wrapper">
+
+       
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © Your Website 2021</span>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-3 col-xxl-2">
-        <div class="bg-white end-0" id="sidebar-wrapper">
-          <div class="list-group list-group-flush border-start">
-            <a class="
-                  list-group-item list-group-item-action list-group-item-light
-                  p-3
-                " href="../student/list.php">Profile
-            </a>
-           
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+        </footer>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+   
+ 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+  </body>
 
 </html>
